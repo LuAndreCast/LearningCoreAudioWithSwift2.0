@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B43C26E1E09EABD00B7C00D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B43C26D1E09EABD00B7C00D /* AudioToolbox.framework */; };
 		2B4E02501B8CFC00004F6A1C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4E024F1B8CFC00004F6A1C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B43C26D1E09EABD00B7C00D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2B4E024C1B8CFBFF004F6A1C /* CH02_CAToneFileGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CH02_CAToneFileGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B4E024F1B8CFC00004F6A1C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,17 +34,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B43C26E1E09EABD00B7C00D /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B43C26C1E09EABD00B7C00D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B43C26D1E09EABD00B7C00D /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2B4E02431B8CFBFE004F6A1C = {
 			isa = PBXGroup;
 			children = (
 				2B4E024E1B8CFC00004F6A1C /* CAToneFileGenerator */,
 				2B4E024D1B8CFBFF004F6A1C /* Products */,
+				2B43C26C1E09EABD00B7C00D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,11 +100,12 @@
 		2B4E02441B8CFBFE004F6A1C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Ales Tsurko";
 				TargetAttributes = {
 					2B4E024B1B8CFBFF004F6A1C = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -138,8 +151,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -181,8 +196,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -200,6 +217,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -207,6 +225,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = CH02_CAToneFileGenerator;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -214,6 +233,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = CH02_CAToneFileGenerator;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

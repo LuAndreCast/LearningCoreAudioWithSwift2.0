@@ -9,38 +9,49 @@ import Foundation
 import AudioToolbox
 
 func main() {
-    let argc = Process.argc
-    let argv = Process.arguments
+    let argc = CommandLine.argc
+    let argv = CommandLine.arguments
     
-    guard argc > 1 else {
+    guard argc > 1 else
+    {
         print("Usage: CAMetaData /full/path/to/audiofile\n")
         return
     }
     
-    if let audiofilePath = NSString(UTF8String: argv[1])?.stringByExpandingTildeInPath {
-        let audioURL = NSURL(fileURLWithPath: audiofilePath)
-        var audiofile: AudioFileID = nil
+    if let audiofilePath = NSString(utf8String: argv[1])?.expandingTildeInPath
+    {
+        let audioURL = URL(fileURLWithPath: audiofilePath)
+        var audiofile: AudioFileID? = nil
         var theErr = noErr
         
-        theErr = AudioFileOpenURL(audioURL, AudioFilePermissions.ReadPermission, 0, &audiofile)
-        
+        //open file
+        theErr = AudioFileOpenURL(audioURL as CFURL,
+                                  AudioFilePermissions.readPermission,
+                                  0,
+                                  &audiofile)
         assert(theErr == noErr)
         
+        //file info
         var dictionarySize: UInt32 = 0
         var isWritable: UInt32 = 0
-        theErr = AudioFileGetPropertyInfo(audiofile, kAudioFilePropertyInfoDictionary, &dictionarySize, &isWritable)
-        
+        theErr = AudioFileGetPropertyInfo(audiofile!,
+                                          kAudioFilePropertyInfoDictionary,
+                                          &dictionarySize,
+                                          &isWritable)
         assert(theErr == noErr)
         
-        var dictionary: UnsafePointer<CFDictionaryRef> = nil
-        theErr = AudioFileGetProperty(audiofile, kAudioFilePropertyInfoDictionary, &dictionarySize, &dictionary)
-        
+        //file dictionary
+        var dictionary: UnsafePointer<CFDictionary>? = nil
+        theErr = AudioFileGetProperty(audiofile!,
+                                      kAudioFilePropertyInfoDictionary,
+                                      &dictionarySize,
+                                      &dictionary)
         assert(theErr == noErr)
         
-        NSLog("dictionary: %@", dictionary)
+        NSLog("dictionary: %@", dictionary ?? "EMPTY")
         
-        theErr = AudioFileClose(audiofile)
-        
+        //close file
+        theErr = AudioFileClose(audiofile!)
         assert(theErr == noErr)
         
     } else {
